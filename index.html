@@ -3,7 +3,76 @@
 <head>
 	<meta charset="utf-8" />
  	<title>Marvelpedia</title>
-</head>head>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script>
+        "use strict";
+        
+        var MARVEL_URL = "http://gateway.marvel.com/v1/public/"
+        var MARVEL_API_KEY = "e2abba687aff830cb2b9347173cf493d";
+        
+//        var MEDIAWIKI_URL = "http://api.eventful.com/json/events/search?callback=jsonLoaded&app_key="
+//        var MEDIAWIKI_API_KEY = "kKZxTbFWF7zDDHnk";
+        
+        window.onload = init;
+        
+        function init(){
+            $("#searchButton").click(function(){
+                var charToSearch = $("#characterName").val();
+                console.log(charToSearch);
+                // build up our Marvel URL string
+                var marvelUrl = MARVEL_URL 
+                marvelUrl += "characters=?name=";
+                marvelUrl += charToSearch;
+                marvelUrl += "&apikey=";
+                marvelUrl += MARVEL_API_KEY;
+                //Test working url
+                marvelUrl = "http://gateway.marvel.com:80/v1/public/characters?name=Deadpool&apikey=e2abba687aff830cb2b9347173cf493d"
+                
+                // call the web service, and download the file
+                console.log(marvelUrl);
+                $("#content").fadeOut(250);
+                var request = $.ajax({
+                    dataType: "jsonp",
+                    url: marvelUrl,
+                    data: null,
+                    //success: jsonLoaded
+                });
+                
+                request.done(jsonLoaded);
+                
+//                request.fail(function(jqXHR, textStaturs){
+//                    console.log( "Request Failed: " + textStatus);
+//                });
+                request.fail(function(){
+                    console.log( "Request Failed");
+                });
+            });
+        }
+        function jsonLoaded(obj){
+            console.log("obj = " +obj);
+            console.log("obj stringified = " + JSON.stringify(obj));            
+     
+            // if there's an error, print a message and return
+            if (obj.code != 200){
+                var status = obj.status;
+                document.querySelector("#content").innerHTML = "<h3><b>Error!</b></h3>" + "<p><i>" + status + "</i><p>";
+                $("#content").fadeIn(500);
+                return; // Bail out
+            }
+            // if there are no results, print a message and return
+            if(obj.data.count == 0){
+                var status = "No results found";
+                document.querySelector("#content").innerHTML = "<p><i>" + status + "</i><p>" + "<p><i>";
+                $("#content").fadeIn(500);
+                return; // Bail out
+            }
+        }
+    </script>
+</head>
 <body>
+    <input type="text" id="characterName" value="Deadpool">
+    <button id="searchButton">Search</button>
+    <div id="content">
+    </div>
 </body>
 </html>
