@@ -4,14 +4,13 @@
 	<meta charset="utf-8" />
  	<title>Marvelpedia</title>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="hash.js"></script>
     <script>
         "use strict";
-        
-        var MARVEL_URL = "http://gateway.marvel.com/v1/public/"
-        var MARVEL_API_KEY = "e2abba687aff830cb2b9347173cf493d";
-        
-//        var MEDIAWIKI_URL = "http://api.eventful.com/json/events/search?callback=jsonLoaded&app_key="
-//        var MEDIAWIKI_API_KEY = "kKZxTbFWF7zDDHnk";
+                
+        var MARVEL_URL = "http://gateway.marvel.com/v1/public/callback=jsonLoaded&"
+        var MARVEL_API_PUBLIC_KEY = "e2abba687aff830cb2b9347173cf493d";
+        var MARVEL_API_PRIVATE_KEY = "d505fc5779c7ac23f6b298fa0d6224c4d5e38fe1";
         
         window.onload = init;
         
@@ -21,30 +20,35 @@
                 console.log(charToSearch);
                 // build up our Marvel URL string
                 var marvelUrl = MARVEL_URL 
-                marvelUrl += "characters=?name=";
+                marvelUrl += "characters?name=";
                 marvelUrl += charToSearch;
-                marvelUrl += "&apikey=";
-                marvelUrl += MARVEL_API_KEY;
-                //Test working url
-                marvelUrl = "http://gateway.marvel.com:80/v1/public/characters?name=Deadpool&apikey=e2abba687aff830cb2b9347173cf493d"
+                marvelUrl += "&limit=99&apikey=";
+                marvelUrl += MARVEL_API_PUBLIC_KEY;
                 
+                
+                //first select a random year
+                var year = 2010;
+                //then a month
+                var month = 4;
+                var monthStr = month<10?"0"+month:month;
+                var beginDateStr = year + "-" + monthStr + "-01";
+                var eom = 24;
+                var endDateStr = year + "-" + monthStr + "-" + eom;
+                
+                marvelUrl = "http://gateway.marvel.com/v1/public/comics?limit=100&format=comic&formatType=comic&dateRange="+beginDateStr+"%2C"+endDateStr+"&apikey="+MARVEL_API_PUBLIC_KEY;
+
+                var ts = new Date().getTime();
+                var hash = calcMD5(ts + MARVEL_API_PRIVATE_KEY + MARVEL_API_PUBLIC_KEY);
+                marvelUrl += "&ts="+ts+"&hash="+hash;
+                                
                 // call the web service, and download the file
                 console.log(marvelUrl);
                 $("#content").fadeOut(250);
-                var request = $.ajax({
+                $.ajax({
                     dataType: "jsonp",
                     url: marvelUrl,
                     data: null,
-                    //success: jsonLoaded
-                });
-                
-                request.done(jsonLoaded);
-                
-//                request.fail(function(jqXHR, textStaturs){
-//                    console.log( "Request Failed: " + textStatus);
-//                });
-                request.fail(function(){
-                    console.log( "Request Failed");
+                    success: jsonLoaded
                 });
             });
         }
