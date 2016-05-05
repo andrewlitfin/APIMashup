@@ -6,9 +6,8 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script type="text/javascript" src="hash.js"></script>
     <script>
-        "use strict";
-                
-        var MARVEL_URL = "http://gateway.marvel.com/v1/public/callback=jsonLoaded&"
+        "use strict";        
+        var MARVEL_URL = "http://gateway.marvel.com/v1/public/comics?limit=100"
         var MARVEL_API_PUBLIC_KEY = "e2abba687aff830cb2b9347173cf493d";
         var MARVEL_API_PRIVATE_KEY = "d505fc5779c7ac23f6b298fa0d6224c4d5e38fe1";
         
@@ -16,31 +15,34 @@
         
         function init(){
             $("#searchButton").click(function(){
-                var charToSearch = $("#characterName").val();
-                console.log(charToSearch);
+                var searchType = $("#searchType").val();
+                var additionalFilter = $("#additionalFilter").val();
+                
                 // build up our Marvel URL string
-                var marvelUrl = MARVEL_URL 
-                marvelUrl += "characters?name=";
-                marvelUrl += charToSearch;
-                marvelUrl += "&limit=99&apikey=";
-                marvelUrl += MARVEL_API_PUBLIC_KEY;
+                var marvelUrl = MARVEL_URL;
                 
+                console.log(searchType + "   " + additionalFilter);
+                //Add the search filter 
+                if (searchType == "comic"){
+                    marvelUrl += "&format=comic&formatType=comic";
+                    
+                    if (additionalFilter == "dateRange"){
+                        var startDate = $("#startDate").val();
+                        var endDate = $("#endDate").val();
+                        //Add the date range to the URL
+                        marvelUrl += "&dateRange=" + startDate + "%2C" + endDate;
+                    }
+                }
                 
-                //first select a random year
-                var year = 2010;
-                //then a month
-                var month = 4;
-                var monthStr = month<10?"0"+month:month;
-                var beginDateStr = year + "-" + monthStr + "-01";
-                var eom = 24;
-                var endDateStr = year + "-" + monthStr + "-" + eom;
-                
-                marvelUrl = "http://gateway.marvel.com/v1/public/comics?limit=100&format=comic&formatType=comic&dateRange="+beginDateStr+"%2C"+endDateStr+"&apikey="+MARVEL_API_PUBLIC_KEY;
-
+                //Add the API Key to the URL
+                marvelUrl += "&apikey=" + MARVEL_API_PUBLIC_KEY;
+                //Calculate timestamp
                 var ts = new Date().getTime();
+                //Calculate hashcode based on timestamp, private key, and public key
                 var hash = calcMD5(ts + MARVEL_API_PRIVATE_KEY + MARVEL_API_PUBLIC_KEY);
+                //add timestamp and hash to the URL
                 marvelUrl += "&ts="+ts+"&hash="+hash;
-                                
+                
                 // call the web service, and download the file
                 console.log(marvelUrl);
                 $("#content").fadeOut(250);
@@ -74,7 +76,15 @@
     </script>
 </head>
 <body>
-    <input type="text" id="characterName" value="Deadpool">
+    <h2>Search Marvel Comics Based On A Date Range</h2>
+    <select id="searchType">
+        <option value="comic">Comic</option>
+    </select>
+    <select id="additionalFilter">
+        <option value="dateRange">Date Range</option>
+    </select>
+    <input type="text" id="startDate" value="2010-01-01">
+    <input type="text" id="endDate" value="2010-04-01">
     <button id="searchButton">Search</button>
     <div id="content">
     </div>
