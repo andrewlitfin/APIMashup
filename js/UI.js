@@ -28,9 +28,6 @@ function buildUI(){
     var seriesOption = document.createElement('option');
     seriesOption.value = 'series';
     seriesOption.innerHTML = 'Series'; searchTypeSelector.appendChild(seriesOption);
-    var storiesOption = document.createElement('option');
-    storiesOption.value = 'stories';
-    storiesOption.innerHTML = 'Stories'; searchTypeSelector.appendChild(storiesOption);
     
     //Create an area for the search options, and set a default state
     var searchOptionsDiv = document.createElement('div');
@@ -43,6 +40,7 @@ function buildUI(){
 
     var nameField = document.createElement('input');
     nameField.type = 'text';
+    nameField.id = 'characterName';
     nameFieldTitle.appendChild(nameField);
    
     //change the search options based on the search option selector 
@@ -61,6 +59,7 @@ function buildUI(){
                 
                 var nameField = document.createElement('input');
                 nameField.type = 'text';
+                nameField.id = 'characterName';
                 nameFieldTitle.appendChild(nameField);
                 
                 break;
@@ -69,7 +68,7 @@ function buildUI(){
                 
                 //Title
                 var dateRangeTitle = document.createElement('p');
-                dateRangeTitle.innerHTML = "Search Comic From:";
+                dateRangeTitle.innerHTML = "Search All Comics From:";
                 searchOptionsDiv.appendChild(dateRangeTitle);
                 
                 //Start Date
@@ -78,6 +77,7 @@ function buildUI(){
                 searchOptionsDiv.appendChild(startDateTitle);
                 var startDateField = document.createElement('input');
                 startDateField.type = 'text';
+                startDateField.id = 'startDate';
                 startDateField.value = "YYYY-MM-DD";
                 searchOptionsDiv.appendChild(startDateField);
                 
@@ -87,6 +87,7 @@ function buildUI(){
                 searchOptionsDiv.appendChild(endDateTitle);
                 var endDateField = document.createElement('input');
                 endDateField.type = 'text';
+                endDateField.id = 'endDate';
                 endDateField.value = "YYYY-MM-DD";
                 searchOptionsDiv.appendChild(endDateField);
             
@@ -94,13 +95,23 @@ function buildUI(){
             case "creators":
                 console.log("Creators");
                 
-                var nameFieldTitle = document.createElement('p');
-                nameFieldTitle.innerHTML = "Creator Name: ";
-                searchOptionsDiv.appendChild(nameFieldTitle);
+                var firstNameFieldTitle = document.createElement('p');
+                firstNameFieldTitle.innerHTML = "Creator First Name: ";
+                searchOptionsDiv.appendChild(firstNameFieldTitle);
                 
-                var nameField = document.createElement('input');
-                nameField.type = 'text';
-                nameFieldTitle.appendChild(nameField);
+                var firstNameField = document.createElement('input');
+                firstNameField.type = 'text';
+                firstNameField.id = 'creatorFirstName';
+                firstNameFieldTitle.appendChild(firstNameField);
+                
+                var lastNameFieldTitle = document.createElement('p');
+                lastNameFieldTitle.innerHTML = "Creator First Name: ";
+                searchOptionsDiv.appendChild(lastNameFieldTitle);
+                
+                var lastNameField = document.createElement('input');
+                lastNameField.type = 'text';
+                lastNameField.id = 'creatorLastName';
+                lastNameFieldTitle.appendChild(lastNameField);
                 
                 break;
             case "events":
@@ -112,6 +123,7 @@ function buildUI(){
                 
                 var nameField = document.createElement('input');
                 nameField.type = 'text';
+                nameField.id = 'eventName'
                 nameFieldTitle.appendChild(nameField);
                 
                 break;
@@ -124,18 +136,7 @@ function buildUI(){
                 
                 var nameField = document.createElement('input');
                 nameField.type = 'text';
-                nameFieldTitle.appendChild(nameField);
-                
-                break;
-            case "stories":
-                console.log("Stories");
-                
-                var nameFieldTitle = document.createElement('p');
-                nameFieldTitle.innerHTML = "Story Name: ";
-                searchOptionsDiv.appendChild(nameFieldTitle);
-                
-                var nameField = document.createElement('input');
-                nameField.type = 'text';
+                nameField.id = 'seriesName';
                 nameFieldTitle.appendChild(nameField);
                 
                 break;

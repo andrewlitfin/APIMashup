@@ -6,9 +6,10 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script type="text/javascript" src="js/hash.js"></script>
     <script type="text/javascript" src="js/UI.js"></script>
+    <script type="text/javascript" src="js/jsonLoaded.js"></script>
     <script>
         "use strict";        
-        var MARVEL_URL = "https://gateway.marvel.com/v1/public/comics?limit=100"
+        var MARVEL_URL = "https://gateway.marvel.com/v1/public/"
         var MARVEL_API_PUBLIC_KEY = "e2abba687aff830cb2b9347173cf493d";
         var MARVEL_API_PRIVATE_KEY = "d505fc5779c7ac23f6b298fa0d6224c4d5e38fe1";
         
@@ -19,27 +20,51 @@
             buildUI();
             
             $("#searchButton").click(function(){
-                var searchType = $("#searchType").val();
-                var additionalFilter = $("#additionalFilter").val();
+                var searchType = document.querySelector("#searchType").value;
                 
                 // build up our Marvel URL string
                 var marvelUrl = MARVEL_URL;
                 
-                console.log(searchType + "   " + additionalFilter);
-                //Add the search filter 
-                if (searchType == "comic"){
-                    marvelUrl += "&format=comic&formatType=comic";
-                    
-                    if (additionalFilter == "dateRange"){
-                        var startDate = $("#startDate").val();
-                        var endDate = $("#endDate").val();
-                        //Add the date range to the URL
-                        marvelUrl += "&dateRange=" + startDate + "%2C" + endDate;
-                    }
+                switch(searchType){
+                    case "character":
+                        console.log("Character Search");
+                        marvelUrl += "characters?";
+                        var charToSearch = document.querySelector("#characterName").value;
+                        marvelUrl += "name=" + charToSearch;
+                        break;
+                    case "comic":
+                        console.log("Comic Search");
+                        marvelUrl += "comics?";
+                        var startDate = document.querySelector("#startDate").value;
+                        var endDate = document.querySelector("#endDate").value;
+                        marvelUrl += "dateRange=" + startDate + "%2C" + endDate;
+                        break;
+                    case "creators":
+                        console.log("Creators Search");
+                        marvelUrl += "creators?";
+                        var creatorFirstName = document.querySelector("#creatorFirstName").value;
+                        var creatorLastName = document.querySelector("#creatorLastName").value;
+                        marvelUrl += "firstName=" + creatorFirstName + "&lastName=" + creatorLastName;
+                        break;
+                    case "events":
+                        console.log("Events Search");
+                        marvelUrl += "events?";
+                        var eventToSearch = document.querySelector("#eventName").value;
+                        marvelUrl += "name=" + eventToSearch;
+                        break;
+                    case "series":
+                        console.log("Series Search");
+                        marvelUrl += "series?";
+                        var seriesToSearch = document.querySelector("#seriesName").value;
+                        marvelUrl += "title=" + seriesToSearch;
+                        break;
+                    default:
+                        console.log("FAILED SEARCH SELECT ERROR");
+                        break;
                 }
                 
                 //Add the API Key to the URL
-                marvelUrl += "&apikey=" + MARVEL_API_PUBLIC_KEY;
+                marvelUrl += "&limit=100&apikey=" + MARVEL_API_PUBLIC_KEY;
                 //Calculate timestamp
                 var ts = new Date().getTime();
                 //Calculate hashcode based on timestamp, private key, and public key
@@ -57,25 +82,6 @@
                     success: jsonLoaded
                 });
             });
-        }
-        function jsonLoaded(obj){
-            console.log("obj = " +obj);
-            console.log("obj stringified = " + JSON.stringify(obj));            
-     
-            // if there's an error, print a message and return
-            if (obj.code != 200){
-                var status = obj.status;
-                document.querySelector("#content").innerHTML = "<h3><b>Error!</b></h3>" + "<p><i>" + status + "</i><p>";
-                $("#content").fadeIn(500);
-                return; // Bail out
-            }
-            // if there are no results, print a message and return
-            if(obj.data.count == 0){
-                var status = "No results found";
-                document.querySelector("#content").innerHTML = "<p><i>" + status + "</i><p>" + "<p><i>";
-                $("#content").fadeIn(500);
-                return; // Bail out
-            }
         }
     </script>
 </head>
