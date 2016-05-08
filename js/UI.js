@@ -14,21 +14,21 @@ function buildUI(){
 
     //Options for search type selector
     var characterOption = document.createElement('option');
-    comicOption.value = 'character';
-    comicOption.innerHTML = 'Character'; searchTypeSelector.appendChild(characterOption);
+    characterOption.value = 'character';
+    characterOption.innerHTML = 'Character'; searchTypeSelector.appendChild(characterOption);
     var comicOption = document.createElement('option');
     comicOption.value = 'comic';
     comicOption.innerHTML = 'Comic'; searchTypeSelector.appendChild(comicOption);
     var creatorsOption = document.createElement('option');
-    comicOption.value = 'creators';
-    comicOption.innerHTML = 'Creators'; searchTypeSelector.appendChild(creatorsOption);
+    creatorsOption.value = 'creators';
+    creatorsOption.innerHTML = 'Creators'; searchTypeSelector.appendChild(creatorsOption);
     var eventsOption = document.createElement('option');
-    comicOption.value = 'events';
-    comicOption.innerHTML = 'Events'; searchTypeSelector.appendChild(eventsOption);
+    eventsOption.value = 'events';
+    eventsOption.innerHTML = 'Events'; searchTypeSelector.appendChild(eventsOption);
     var seriesOption = document.createElement('option');
-    comicOption.value = 'series';
-    comicOption.innerHTML = 'Series'; searchTypeSelector.appendChild(seriesOption);
+    seriesOption.value = 'series';
+    seriesOption.innerHTML = 'Series'; searchTypeSelector.appendChild(seriesOption);
     var storiesOption = document.createElement('option');
-    comicOption.value = 'stories';
-    comicOption.innerHTML = 'Stories'; searchTypeSelector.appendChild(storiesOption);
+    storiesOption.value = 'stories';
+    storiesOption.innerHTML = 'Stories'; searchTypeSelector.appendChild(storiesOption);
 }
