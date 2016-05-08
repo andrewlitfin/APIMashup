@@ -31,4 +31,117 @@ function buildUI(){
     var storiesOption = document.createElement('option');
     storiesOption.value = 'stories';
     storiesOption.innerHTML = 'Stories'; searchTypeSelector.appendChild(storiesOption);
+    
+    //Create an area for the search options, and set a default state
+    var searchOptionsDiv = document.createElement('div');
+    searchOptionsDiv.id = "searchOptions";
+    contentDiv.appendChild(searchOptionsDiv);
+    
+    var nameFieldTitle = document.createElement('paragraph');
+    nameFieldTitle.innerHTML = "Character Name: ";
+    searchOptionsDiv.appendChild(nameFieldTitle);
+
+    var nameField = document.createElement('input');
+    nameField.type = 'text';
+    nameFieldTitle.appendChild(nameField);
+   
+    //change the search options based on the search option selector 
+    document.querySelector("#searchType").onchange = function (e){
+        //clear the search options
+        searchOptionsDiv.innerHTML = "";
+        
+        //repopulate the search options based on the value of the search option selector
+        switch(e.target.value){
+            case "character":
+                console.log("Character");
+                
+                var nameFieldTitle = document.createElement('paragraph');
+                nameFieldTitle.innerHTML = "Character Name: ";
+                searchOptionsDiv.appendChild(nameFieldTitle);
+                
+                var nameField = document.createElement('input');
+                nameField.type = 'text';
+                nameFieldTitle.appendChild(nameField);
+                
+                break;
+            case "comic":
+                console.log("Comic");
+                
+                //Title
+                var dateRangeTitle = document.createElement('paragraph');
+                dateRangeTitle.innerHTML = "Search Comic From:";
+                searchOptionsDiv.appendChild(dateRangeTitle);
+                
+                //Start Date
+                var startDateTitle = document.createElement('paragraph');
+                startDateTitle.innerHTML = "Start Date: ";
+                dateRangeTitle.appendChild(startDateTitle);
+                var startDateField = document.createElement('input');
+                startDateField.type = 'text';
+                startDateField.innerHTML = "YYYY-MM-DD";
+                dateRangeTitle.appendChild(startDateField);
+                
+                //End Date
+                var endDateTitle = document.createElement('paragraph');
+                endDateTitle.innerHTML = "Start Date: ";
+                dateRangeTitle.appendChild(endDateTitle);
+                var endDateField = document.createElement('input');
+                endDateField.type = 'text';
+                endDateField.innerHTML = "YYYY-MM-DD";
+                dateRangeTitle.appendChild(endDateField);
+            
+                break;
+            case "creators":
+                console.log("Creators");
+                
+                var nameFieldTitle = document.createElement('paragraph');
+                nameFieldTitle.innerHTML = "Creator Name: ";
+                searchOptionsDiv.appendChild(nameFieldTitle);
+                
+                var nameField = document.createElement('input');
+                nameField.type = 'text';
+                nameFieldTitle.appendChild(nameField);
+                
+                break;
+            case "events":
+                console.log("Events");
+                
+                var nameFieldTitle = document.createElement('paragraph');
+                nameFieldTitle.innerHTML = "Event Name: ";
+                searchOptionsDiv.appendChild(nameFieldTitle);
+                
+                var nameField = document.createElement('input');
+                nameField.type = 'text';
+                nameFieldTitle.appendChild(nameField);
+                
+                break;
+            case "series":
+                console.log("Series");
+                
+                var nameFieldTitle = document.createElement('paragraph');
+                nameFieldTitle.innerHTML = "Series Name: ";
+                searchOptionsDiv.appendChild(nameFieldTitle);
+                
+                var nameField = document.createElement('input');
+                nameField.type = 'text';
+                nameFieldTitle.appendChild(nameField);
+                
+                break;
+            case "stories":
+                console.log("Stories");
+                
+                var nameFieldTitle = document.createElement('paragraph');
+                nameFieldTitle.innerHTML = "Story Name: ";
+                searchOptionsDiv.appendChild(nameFieldTitle);
+                
+                var nameField = document.createElement('input');
+                nameField.type = 'text';
+                nameFieldTitle.appendChild(nameField);
+                
+                break;
+            default:
+                console.log("Default");
+                break;
+        }
+    };
 }
