@@ -16,4 +16,12 @@ function jsonLoaded(obj){
         $("#content").fadeIn(500);
         return; // Bail out
     }
+    
+    //if there are results, put them on the screen
+    var content = document.querySelector("#content");
+    content.innerHTML = "";
+    var JSONContent = document.createElement('p');
+    JSONContent.innerHTML = JSON.stringify(obj);
+    content.appendChild(JSONContent);
+    $("#content").fadeIn(250);
 }
