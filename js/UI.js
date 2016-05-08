@@ -37,7 +37,7 @@ function buildUI(){
     searchOptionsDiv.id = "searchOptions";
     contentDiv.appendChild(searchOptionsDiv);
     
-    var nameFieldTitle = document.createElement('paragraph');
+    var nameFieldTitle = document.createElement('p');
     nameFieldTitle.innerHTML = "Character Name: ";
     searchOptionsDiv.appendChild(nameFieldTitle);
 
@@ -55,7 +55,7 @@ function buildUI(){
             case "character":
                 console.log("Character");
                 
-                var nameFieldTitle = document.createElement('paragraph');
+                var nameFieldTitle = document.createElement('p');
                 nameFieldTitle.innerHTML = "Character Name: ";
                 searchOptionsDiv.appendChild(nameFieldTitle);
                 
@@ -68,33 +68,33 @@ function buildUI(){
                 console.log("Comic");
                 
                 //Title
-                var dateRangeTitle = document.createElement('paragraph');
+                var dateRangeTitle = document.createElement('p');
                 dateRangeTitle.innerHTML = "Search Comic From:";
                 searchOptionsDiv.appendChild(dateRangeTitle);
                 
                 //Start Date
-                var startDateTitle = document.createElement('paragraph');
+                var startDateTitle = document.createElement('p');
                 startDateTitle.innerHTML = "Start Date: ";
-                dateRangeTitle.appendChild(startDateTitle);
+                searchOptionsDiv.appendChild(startDateTitle);
                 var startDateField = document.createElement('input');
                 startDateField.type = 'text';
-                startDateField.innerHTML = "YYYY-MM-DD";
-                dateRangeTitle.appendChild(startDateField);
+                startDateField.value = "YYYY-MM-DD";
+                searchOptionsDiv.appendChild(startDateField);
                 
                 //End Date
-                var endDateTitle = document.createElement('paragraph');
+                var endDateTitle = document.createElement('p');
                 endDateTitle.innerHTML = "Start Date: ";
-                dateRangeTitle.appendChild(endDateTitle);
+                searchOptionsDiv.appendChild(endDateTitle);
                 var endDateField = document.createElement('input');
                 endDateField.type = 'text';
-                endDateField.innerHTML = "YYYY-MM-DD";
-                dateRangeTitle.appendChild(endDateField);
+                endDateField.value = "YYYY-MM-DD";
+                searchOptionsDiv.appendChild(endDateField);
             
                 break;
             case "creators":
                 console.log("Creators");
                 
-                var nameFieldTitle = document.createElement('paragraph');
+                var nameFieldTitle = document.createElement('p');
                 nameFieldTitle.innerHTML = "Creator Name: ";
                 searchOptionsDiv.appendChild(nameFieldTitle);
                 
@@ -106,7 +106,7 @@ function buildUI(){
             case "events":
                 console.log("Events");
                 
-                var nameFieldTitle = document.createElement('paragraph');
+                var nameFieldTitle = document.createElement('p');
                 nameFieldTitle.innerHTML = "Event Name: ";
                 searchOptionsDiv.appendChild(nameFieldTitle);
                 
@@ -118,7 +118,7 @@ function buildUI(){
             case "series":
                 console.log("Series");
                 
-                var nameFieldTitle = document.createElement('paragraph');
+                var nameFieldTitle = document.createElement('p');
                 nameFieldTitle.innerHTML = "Series Name: ";
                 searchOptionsDiv.appendChild(nameFieldTitle);
                 
@@ -130,7 +130,7 @@ function buildUI(){
             case "stories":
                 console.log("Stories");
                 
-                var nameFieldTitle = document.createElement('paragraph');
+                var nameFieldTitle = document.createElement('p');
                 nameFieldTitle.innerHTML = "Story Name: ";
                 searchOptionsDiv.appendChild(nameFieldTitle);
                 
