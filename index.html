@@ -51,7 +51,7 @@
                 console.log(marvelUrl);
                 $("#content").fadeOut(250);
                 $.ajax({
-                    dataType: "jsonp",
+                    dataType: "json",
                     url: marvelUrl,
                     data: null,
                     success: jsonLoaded
