@@ -83,7 +83,7 @@ function buildUI(){
                 
                 //End Date
                 var endDateTitle = document.createElement('p');
-                endDateTitle.innerHTML = "Start Date: ";
+                endDateTitle.innerHTML = "End Date: ";
                 searchOptionsDiv.appendChild(endDateTitle);
                 var endDateField = document.createElement('input');
                 endDateField.type = 'text';
