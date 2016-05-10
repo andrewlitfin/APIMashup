@@ -34,6 +34,7 @@ function jsonLoaded(obj){
                     var image = document.createElement('img');
                     image.src = path+ "." + extension;
                     image.alt = document.querySelector("#characterName").value;
+                    image.onclick = expandResult;
                     content.appendChild(image);
                 }
             }
@@ -51,6 +52,7 @@ function jsonLoaded(obj){
                     var image = document.createElement('img');
                     image.src = path+ "." + extension;
                     image.alt = title;
+                    image.onclick = expandResult;
                     content.appendChild(image);
                 }
             }
@@ -67,6 +69,7 @@ function jsonLoaded(obj){
                     var image = document.createElement('img');
                     image.src = path+ "." + extension;
                     image.alt = document.querySelector("#creatorFirstName").value + " " + document.querySelector("#creatorLastName").value;
+                    image.onclick = expandResult;
                     content.appendChild(image);
                 }
             }
@@ -82,7 +85,8 @@ function jsonLoaded(obj){
                     //create the element
                     var image = document.createElement('img');
                     image.src = path+ "." + extension;
-                    image.alt = document.querySelector("#eventName").value
+                    image.alt = document.querySelector("#eventName").value;
+                    image.onclick = expandResult;
                     content.appendChild(image);
                 }
             }
@@ -99,6 +103,7 @@ function jsonLoaded(obj){
                     var image = document.createElement('img');
                     image.src = path+ "." + extension;
                     image.alt = document.querySelector("#seriesName").value;
+                    image.onclick = expandResult;
                     content.appendChild(image);
                 }
             }
