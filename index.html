@@ -7,6 +7,36 @@
     <script type="text/javascript" src="js/hash.js"></script>
     <script type="text/javascript" src="js/UI.js"></script>
     <script type="text/javascript" src="js/jsonLoaded.js"></script>
+    <script type="text/javascript" src="js/expandResult.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Marvel' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="assets/favicon.ico"/>
+    <style>
+        *{
+            font-family: 'Marvel', sans-serif;
+        }
+        body{
+            background-color: #e23636;
+            color: #504a4a;
+        }
+        select{
+            background-color: #f78f3f;
+            border-color: #504a4a;
+        }
+        button{
+            background-color: #f78f3f;
+            border-color: #504a4a;
+            margin-bottom: 10px;
+        }
+        input{
+            background-color: #f78f3f;
+            border-color: #504a4a;
+        }
+        img{
+            width: 19.5%;
+            height: 19.5%;
+            margin: 2px;
+        }
+    </style>
     <script>
         "use strict";        
         var MARVEL_URL = "https://gateway.marvel.com/v1/public/"
@@ -27,33 +57,28 @@
                 
                 switch(searchType){
                     case "character":
-                        console.log("Character Search");
                         marvelUrl += "characters?";
                         var charToSearch = document.querySelector("#characterName").value;
                         marvelUrl += "name=" + charToSearch;
                         break;
                     case "comic":
-                        console.log("Comic Search");
                         marvelUrl += "comics?";
                         var startDate = document.querySelector("#startDate").value;
                         var endDate = document.querySelector("#endDate").value;
                         marvelUrl += "dateRange=" + startDate + "%2C" + endDate;
                         break;
                     case "creators":
-                        console.log("Creators Search");
                         marvelUrl += "creators?";
                         var creatorFirstName = document.querySelector("#creatorFirstName").value;
                         var creatorLastName = document.querySelector("#creatorLastName").value;
                         marvelUrl += "firstName=" + creatorFirstName + "&lastName=" + creatorLastName;
                         break;
                     case "events":
-                        console.log("Events Search");
                         marvelUrl += "events?";
                         var eventToSearch = document.querySelector("#eventName").value;
                         marvelUrl += "name=" + eventToSearch;
                         break;
                     case "series":
-                        console.log("Series Search");
                         marvelUrl += "series?";
                         var seriesToSearch = document.querySelector("#seriesName").value;
                         marvelUrl += "title=" + seriesToSearch;

@@ -1,6 +1,6 @@
 function jsonLoaded(obj){
-    console.log("obj = " +obj);
-    console.log("obj stringified = " + JSON.stringify(obj));            
+//    console.log("obj = " +obj);
+//    console.log("obj stringified = " + JSON.stringify(obj));            
 
     // if there's an error, print a message and return
     if (obj.code != 200){
@@ -20,12 +20,97 @@ function jsonLoaded(obj){
     //if there are results, put them on the screen
     var content = document.querySelector("#content");
     content.innerHTML = "";
-    var JSONContent = document.createElement('p');
-    JSONContent.innerHTML = JSON.stringify(obj);
-    content.appendChild(JSONContent);
-    //$("#content").fadeIn(250);
-}
 
+    var searchType = document.querySelector("#searchType").value;
+    switch(searchType){
+        case "character":
+            //Find the images of all characters returned and display them
+            var results = obj.data.results;
+            for (var i = 0; i < results.length; i++){
+                if(results[i].thumbnail.path){
+                    var path = results[i].thumbnail.path;
+                    var extension = results[i].thumbnail.extension;
+                    //create the element
+                    var image = document.createElement('img');
+                    image.src = path+ "." + extension;
+                    image.alt = document.querySelector("#characterName").value;
+                    content.appendChild(image);
+                }
+            }
+            
+            break;
+        case "comic":
+            //Find the images of all comics returned and display them
+            var results = obj.data.results;
+            for (var i = 0; i < results.length; i++){
+                if(results[i].thumbnail.path){
+                    var path = results[i].thumbnail.path;
+                    var extension = results[i].thumbnail.extension;
+                    var title = results[i].title;
+                    //create the element
+                    var image = document.createElement('img');
+                    image.src = path+ "." + extension;
+                    image.alt = title;
+                    content.appendChild(image);
+                }
+            }
+            
+            break;
+        case "creators":
+            //Find the images of all creators returned and display them
+            var results = obj.data.results;
+            for (var i = 0; i < results.length; i++){
+                if(results[i].thumbnail.path){
+                    var path = results[i].thumbnail.path;
+                    var extension = results[i].thumbnail.extension;
+                    //create the element
+                    var image = document.createElement('img');
+                    image.src = path+ "." + extension;
+                    image.alt = document.querySelector("#creatorFirstName").value + " " + document.querySelector("#creatorLastName").value;
+                    content.appendChild(image);
+                }
+            }
+            
+            break;
+        case "events":
+            //Find the images of all events returned and display them
+            var results = obj.data.results;
+            for (var i = 0; i < results.length; i++){
+                if(results[i].thumbnail.path){
+                    var path = results[i].thumbnail.path;
+                    var extension = results[i].thumbnail.extension;
+                    //create the element
+                    var image = document.createElement('img');
+                    image.src = path+ "." + extension;
+                    image.alt = document.querySelector("#eventName").value
+                    content.appendChild(image);
+                }
+            }
+            
+            break;
+        case "series":
+            //Find the images of all series returned and display them
+            var results = obj.data.results;
+            for (var i = 0; i < results.length; i++){
+                if(results[i].thumbnail.path){
+                    var path = results[i].thumbnail.path;
+                    var extension = results[i].thumbnail.extension;
+                    //create the element
+                    var image = document.createElement('img');
+                    image.src = path+ "." + extension;
+                    image.alt = document.querySelector("#seriesName").value;
+                    content.appendChild(image);
+                }
+            }
+            
+            break;
+        default:
+            console.log("FAILED SEARCH SELECT ERROR");
+            break;
+    }
+    
+    $("#content").fadeIn(250);
+}
 function jsonError(jqXHR, textStatus, errorThrown) {
     console.log(jqXHR);
     console.log(textStatus);
