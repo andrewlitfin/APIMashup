@@ -99,12 +99,13 @@
                 
                 // call the web service, and download the file
                 console.log(marvelUrl);
-                $("#content").fadeOut(250);
+                //$("#content").fadeOut(250);
                 $.ajax({
                     dataType: "json",
                     url: marvelUrl,
                     data: null,
                     success: jsonLoaded,
+                    error: jsonError
                 });
             });
         }

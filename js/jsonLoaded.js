@@ -6,20 +6,21 @@ function jsonLoaded(obj){
     if (obj.code != 200){
         var status = obj.status;
         document.querySelector("#content").innerHTML = "<h3><b>Error!</b></h3>" + "<p><i>" + status + "</i><p>";
-        $("#content").fadeIn(500);
+        //$("#content").fadeIn(500);
         return; // Bail out
     }
     // if there are no results, print a message and return
     if(obj.data.count == 0){
         var status = "No results found";
-        document.querySelector("#content").innerHTML = "<p><i>" + status + "</i><p>" + "<p><i>";
-        $("#content").fadeIn(500);
+        document.querySelector("#content").innerHTML = "<p><i>" + status + "</i></p>";
+        //$("#content").fadeIn(500);
         return; // Bail out
     }
     
     //if there are results, put them on the screen
     var content = document.querySelector("#content");
     content.innerHTML = "";
+
     var searchType = document.querySelector("#searchType").value;
     switch(searchType){
         case "character":
@@ -109,4 +110,11 @@ function jsonLoaded(obj){
     }
     
     $("#content").fadeIn(250);
+}
+function jsonError(jqXHR, textStatus, errorThrown) {
+    console.log(jqXHR);
+    console.log(textStatus);
+    console.log(errorThrown);
+    
+    document.querySelector("#content").innerHTML = "<p><i>Error</i>: " + JSON.parse(jqXHR.responseText).status + "</p>";
 }
