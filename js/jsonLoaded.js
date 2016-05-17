@@ -35,6 +35,8 @@ function jsonLoaded(obj){
                     image.src = path+ "." + extension;
                     image.alt = document.querySelector("#characterName").value;
                     image.onclick = expandResult;
+                    image.dataset.name = results[i].name;
+                    MarvelReturnedEntries[results[i].name] = results[i];
                     content.appendChild(image);
                 }
             }
@@ -121,5 +123,6 @@ function jsonError(jqXHR, textStatus, errorThrown) {
     console.log(textStatus);
     console.log(errorThrown);
     
-    document.querySelector("#content").innerHTML = "<p><i>Error</i>: " + JSON.parse(jqXHR.responseText).status + "</p>";
+    document.querySelector("#content").innerHTML = " ";
+    document.querySelector("#statusText").innerHTML = "<p><i>Error</i>: " + errorThrown + "</p>";
 }

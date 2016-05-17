@@ -31,9 +31,22 @@
             background-color: #f78f3f;
             border-color: #504a4a;
         }
-        img{
-            width: 19.5%;
-            height: 19.5%;
+        #content {
+            float: left;
+            width: 50%;
+        }
+        #content img {
+            width: 170px;
+            height: 170px;
+            margin: 2px;
+        }
+        #expanded {
+            float: left;
+            width: 50%;
+        }
+        #expanded img {
+            width: 300px;
+            height: 300px;
             margin: 2px;
         }
     </style>
@@ -44,6 +57,8 @@
         var MARVEL_API_PRIVATE_KEY = "d505fc5779c7ac23f6b298fa0d6224c4d5e38fe1";
         
         window.onload = init;
+        
+        var MarvelReturnedEntries = [];
         
         function init(){
             //Build the site's UI programatically
@@ -114,7 +129,12 @@
 <body>
     <div id="jsContent"></div>
     <button id="searchButton">Search</button>
+    <div id="statusText">
+        <p>Select an option from the above search type and enter a query to search the Marvel Database!  For example, to search for Deadpool, select Character, enter `Deadpool,' and Search away!</p>
+    </div>
     <div id="content">
+    </div>
+    <div id="expanded">
     </div>
 </body>
 </html>
