@@ -35,7 +35,7 @@ function expandResult(e){
             html += "<h3> Series: " + MarvelReturnedEntries[imgClicked.dataset.title].series.name + "</h3>";
             //List the creators who worked on the comic
             for (var i = 0; i <  MarvelReturnedEntries[imgClicked.dataset.title].creators.items.length; i++){
-                html += "<h3> Creator: " + MarvelReturnedEntries[imgClicked.dataset.title].creators.items[i].name + "," + MarvelReturnedEntries[imgClicked.dataset.title].creators.items[i].role + "</h3>";
+                html += "<h3> Creator: " + MarvelReturnedEntries[imgClicked.dataset.title].creators.items[i].name + ", " + MarvelReturnedEntries[imgClicked.dataset.title].creators.items[i].role + "</h3>";
             }
             //List the price of the comic
             for (var i = 0; i <  MarvelReturnedEntries[imgClicked.dataset.title].prices.length; i++){

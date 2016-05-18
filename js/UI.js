@@ -45,6 +45,7 @@ function buildUI(){
         //clear the search options and the results
         searchOptionsDiv.innerHTML = "";
         resultsDiv.innerHTML = "";
+        resultsDiv.style.visibility = "hidden";
         expandedResultsDiv.innerHTML = "";
         expandedResultsDiv.style.visibility = "hidden";
         

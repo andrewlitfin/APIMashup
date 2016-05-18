@@ -122,7 +122,7 @@ function jsonLoaded(obj){
             break;
     }
     
-    $("#content").fadeIn(250);
+    content.style.visibility = "visible";
 }
 function jsonError(jqXHR, textStatus, errorThrown) {
     console.log(jqXHR);
