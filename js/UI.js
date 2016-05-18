@@ -3,7 +3,7 @@ function buildUI(){
     var contentDiv = document.querySelector("#jsContent");
 
     //Header
-    var mainHeader = document.createElement('h2');
+    var mainHeader = document.createElement('h1');
     mainHeader.innerHTML = "Search the Marvel Comics Database!";
     contentDiv.appendChild(mainHeader);
 
@@ -34,7 +34,7 @@ function buildUI(){
     searchOptionsDiv.id = "searchOptions";
     contentDiv.appendChild(searchOptionsDiv);
     
-    var nameFieldTitle = document.createElement('p');
+    var nameFieldTitle = document.createElement('h2');
     nameFieldTitle.innerHTML = "Character Name: ";
     searchOptionsDiv.appendChild(nameFieldTitle);
 
@@ -53,7 +53,7 @@ function buildUI(){
             case "character":
                 console.log("Character");
                 
-                var nameFieldTitle = document.createElement('p');
+                var nameFieldTitle = document.createElement('h2');
                 nameFieldTitle.innerHTML = "Character Name: ";
                 searchOptionsDiv.appendChild(nameFieldTitle);
                 
@@ -67,12 +67,12 @@ function buildUI(){
                 console.log("Comic");
                 
                 //Title
-                var dateRangeTitle = document.createElement('p');
+                var dateRangeTitle = document.createElement('h2');
                 dateRangeTitle.innerHTML = "Search All Comics From:";
                 searchOptionsDiv.appendChild(dateRangeTitle);
                 
                 //Start Date
-                var startDateTitle = document.createElement('p');
+                var startDateTitle = document.createElement('h2');
                 startDateTitle.innerHTML = "Start Date: ";
                 searchOptionsDiv.appendChild(startDateTitle);
                 var startDateField = document.createElement('input');
@@ -82,7 +82,7 @@ function buildUI(){
                 searchOptionsDiv.appendChild(startDateField);
                 
                 //End Date
-                var endDateTitle = document.createElement('p');
+                var endDateTitle = document.createElement('h2');
                 endDateTitle.innerHTML = "End Date: ";
                 searchOptionsDiv.appendChild(endDateTitle);
                 var endDateField = document.createElement('input');
@@ -95,7 +95,7 @@ function buildUI(){
             case "creators":
                 console.log("Creators");
                 
-                var firstNameFieldTitle = document.createElement('p');
+                var firstNameFieldTitle = document.createElement('h2');
                 firstNameFieldTitle.innerHTML = "Creator First Name: ";
                 searchOptionsDiv.appendChild(firstNameFieldTitle);
                 
@@ -104,7 +104,7 @@ function buildUI(){
                 firstNameField.id = 'creatorFirstName';
                 firstNameFieldTitle.appendChild(firstNameField);
                 
-                var lastNameFieldTitle = document.createElement('p');
+                var lastNameFieldTitle = document.createElement('h2');
                 lastNameFieldTitle.innerHTML = "Creator Last Name: ";
                 searchOptionsDiv.appendChild(lastNameFieldTitle);
                 
@@ -117,7 +117,7 @@ function buildUI(){
             case "events":
                 console.log("Events");
                 
-                var nameFieldTitle = document.createElement('p');
+                var nameFieldTitle = document.createElement('h2');
                 nameFieldTitle.innerHTML = "Event Name: ";
                 searchOptionsDiv.appendChild(nameFieldTitle);
                 
@@ -130,7 +130,7 @@ function buildUI(){
             case "series":
                 console.log("Series");
                 
-                var nameFieldTitle = document.createElement('p');
+                var nameFieldTitle = document.createElement('h2');
                 nameFieldTitle.innerHTML = "Series Name: ";
                 searchOptionsDiv.appendChild(nameFieldTitle);
                 
