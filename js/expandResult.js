@@ -17,7 +17,7 @@ function expandResult(e){
             break;
         case "creators":
             break;
-        case "event":
+        case "events":
             break;
         case "series":
             break;
