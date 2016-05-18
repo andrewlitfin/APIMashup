@@ -74,23 +74,24 @@ function buildUI(){
                 //Start Date
                 var startDateTitle = document.createElement('h2');
                 startDateTitle.innerHTML = "Start Date: ";
-                searchOptionsDiv.appendChild(startDateTitle);
                 var startDateField = document.createElement('input');
                 startDateField.type = 'text';
                 startDateField.id = 'startDate';
                 startDateField.value = "YYYY-MM-DD";
-                searchOptionsDiv.appendChild(startDateField);
+                startDateTitle.appendChild(startDateField);
+                searchOptionsDiv.appendChild(startDateTitle);
+
                 
                 //End Date
                 var endDateTitle = document.createElement('h2');
                 endDateTitle.innerHTML = "End Date: ";
-                searchOptionsDiv.appendChild(endDateTitle);
                 var endDateField = document.createElement('input');
                 endDateField.type = 'text';
                 endDateField.id = 'endDate';
                 endDateField.value = "YYYY-MM-DD";
-                searchOptionsDiv.appendChild(endDateField);
-            
+                endDateTitle.appendChild(endDateField);
+                searchOptionsDiv.appendChild(endDateTitle);
+                            
                 break;
             case "creators":
                 console.log("Creators");
