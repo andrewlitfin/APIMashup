@@ -113,6 +113,9 @@
                 //add timestamp and hash to the URL
                 marvelUrl += "&ts="+ts+"&hash="+hash;
                 
+                //String replace spaces for proper characters in the url
+                marvelUrl = marvelUrl.replace(" ", "%20");
+                
                 // call the web service, and download the file
                 console.log(marvelUrl);
                 //$("#content").fadeOut(250);
