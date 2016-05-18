@@ -36,6 +36,8 @@ function jsonLoaded(obj){
                     image.dataset.name = results[i].name;
                     MarvelReturnedEntries[results[i].name] = results[i];
                     content.appendChild(image);
+                    // Auto click the first result to make it pop up
+                    if (i == 0) {$("img[data-name = '"+results[0].name+"']").click();}
                 }
             }
             
@@ -56,6 +58,8 @@ function jsonLoaded(obj){
                     image.dataset.title = results[i].title;
                     MarvelReturnedEntries[results[i].title] = results[i];
                     content.appendChild(image);
+                    // Auto click the first result to make it pop up
+                    if (i == 0) {$("img[data-title = '"+results[0].title+"']").click();}
                 }
             }
             
@@ -75,6 +79,8 @@ function jsonLoaded(obj){
                     image.dataset.fullName = results[i].fullName;
                     MarvelReturnedEntries[results[i].fullName] = results[i];
                     content.appendChild(image);
+                    // Auto click the first result to make it pop up
+                    if (i == 0) {$("img[data-full-name = '"+results[0].fullName+"']").click();}
                 }
             }
             
@@ -94,6 +100,8 @@ function jsonLoaded(obj){
                     image.dataset.title = results[i].title;
                     MarvelReturnedEntries[results[i].title] = results[i];
                     content.appendChild(image);
+                    // Auto click the first result to make it pop up
+                    if (i == 0) {$("img[data-title = '"+results[0].title+"']").click();}
                 }
             }
             
@@ -113,6 +121,8 @@ function jsonLoaded(obj){
                     image.dataset.title = results[i].title;
                     MarvelReturnedEntries[results[i].title] = results[i];
                     content.appendChild(image);
+                    // Auto click the first result to make it pop up
+                    if (i == 0) {$("img[data-title = '"+results[0].title+"']").click();}
                 }
             }
             
