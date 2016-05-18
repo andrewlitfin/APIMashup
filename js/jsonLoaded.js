@@ -55,7 +55,7 @@ function jsonLoaded(obj){
                     image.src = path+ "." + extension;
                     image.alt = title;
                     image.onclick = expandResult;
-                    image.dataset.name = results[i].title;
+                    image.dataset.title = results[i].title;
                     MarvelReturnedEntries[results[i].title] = results[i];
                     content.appendChild(image);
                 }
@@ -74,7 +74,7 @@ function jsonLoaded(obj){
                     image.src = path+ "." + extension;
                     image.alt = document.querySelector("#creatorFirstName").value + " " + document.querySelector("#creatorLastName").value;
                     image.onclick = expandResult;
-                    image.dataset.name = results[i].fullName;
+                    image.dataset.fullName = results[i].fullName;
                     MarvelReturnedEntries[results[i].fullName] = results[i];
                     content.appendChild(image);
                 }
@@ -93,7 +93,7 @@ function jsonLoaded(obj){
                     image.src = path+ "." + extension;
                     image.alt = document.querySelector("#eventName").value;
                     image.onclick = expandResult;
-                    image.dataset.name = results[i].title;
+                    image.dataset.title = results[i].title;
                     MarvelReturnedEntries[results[i].title] = results[i];
                     content.appendChild(image);
                 }
@@ -112,7 +112,7 @@ function jsonLoaded(obj){
                     image.src = path+ "." + extension;
                     image.alt = document.querySelector("#seriesName").value;
                     image.onclick = expandResult;
-                    image.dataset.name = results[i].title;
+                    image.dataset.title = results[i].title;
                     MarvelReturnedEntries[results[i].title] = results[i];
                     content.appendChild(image);
                 }
