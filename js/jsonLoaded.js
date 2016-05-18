@@ -1,16 +1,14 @@
-"use strict";
-function jsonLoaded(obj){
-//    console.log("obj = " +obj);
-//    console.log("obj stringified = " + JSON.stringify(obj));            
+function jsonLoaded(obj) {
+    "use strict";
 
     // if there's an error, print a message and return
-    if (obj.code != 200){
+    if (obj.code != 200) {
         var status = obj.status;
         document.querySelector("section").innerHTML = "<h3><b>Error!</b></h3>" + "<p><i>" + status + "</i><p>";
         return; // Bail out
     }
     // if there are no results, print a message and return
-    if(obj.data.count == 0){
+    if (obj.data.count == 0) {
         var status = "No results found";
         document.querySelector("section").innerHTML = "<p><i>" + status + "</i></p>";
         return; // Bail out
@@ -21,7 +19,7 @@ function jsonLoaded(obj){
     content.innerHTML = "";
 
     var searchType = document.querySelector("#searchType").value;
-    switch(searchType){
+    switch (searchType) {
         case "character":
             //Find the images of all characters returned and display them
             var results = obj.data.results;

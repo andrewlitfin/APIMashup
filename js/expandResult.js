@@ -1,7 +1,5 @@
-"use strict";
-function expandResult(e){
-    console.log("Expand");
-    console.log(e);
+function expandResult(e) {
+    "use strict";
     
     var imgClicked = e.target;
     
@@ -24,7 +22,9 @@ function expandResult(e){
             html += "<h3>Events Appeared In: " + MarvelReturnedEntries[imgClicked.dataset.name].events.available + "</h3>";
             //If there is a description for the character available, display it
             //Otherwise write no description available
-            if (MarvelReturnedEntries[imgClicked.dataset.name].description != null && MarvelReturnedEntries[imgClicked.dataset.name].description != "") html += "<p>" + MarvelReturnedEntries[imgClicked.dataset.name].description + "</p>";
+            if (MarvelReturnedEntries[imgClicked.dataset.name].description != null && MarvelReturnedEntries[imgClicked.dataset.name].description != "") {
+                html += "<p>" + MarvelReturnedEntries[imgClicked.dataset.name].description + "</p>";
+            }
             else html += "No Description Available";
             break;
         case "comic":
@@ -44,7 +44,9 @@ function expandResult(e){
             }
             //If there is a description of the comic available, display it
             //Otherwise write no description available
-            if (MarvelReturnedEntries[imgClicked.dataset.title].description != null) html += "<p>" + MarvelReturnedEntries[imgClicked.dataset.title].description + "</p>";
+            if (MarvelReturnedEntries[imgClicked.dataset.title].description != null) {
+                html += "<p>" + MarvelReturnedEntries[imgClicked.dataset.title].description + "</p>";
+            }
             else html += "No Description Available";
             break;
         case "creators":
@@ -70,7 +72,9 @@ function expandResult(e){
             html += "<h3> With " + MarvelReturnedEntries[imgClicked.dataset.title].characters.available + " characters appearing in " + MarvelReturnedEntries[imgClicked.dataset.title].comics.available + " comics and " + MarvelReturnedEntries[imgClicked.dataset.title].series.available + " series.</h3>";
             //If there is a description for the event available, display it
             //Otherwise write no description available
-            if (MarvelReturnedEntries[imgClicked.dataset.title].description != null) html += "<p>" + MarvelReturnedEntries[imgClicked.dataset.title].description + "</p>";
+            if (MarvelReturnedEntries[imgClicked.dataset.title].description != null) {
+                html += "<p>" + MarvelReturnedEntries[imgClicked.dataset.title].description + "</p>";
+            }
             else html += "No Description Available";
             break;
         case "series":
@@ -82,7 +86,9 @@ function expandResult(e){
             html += "<p>Featuring " + MarvelReturnedEntries[imgClicked.dataset.title].comics.available + " comics written by " + MarvelReturnedEntries[imgClicked.dataset.title].creators.available + " different creators.</p>"
             //If there is a description for the series available, display it
             //Otherwise write no description available
-            if (MarvelReturnedEntries[imgClicked.dataset.title].description != null) html += "<p>" + MarvelReturnedEntries[imgClicked.dataset.title].description + "</p>";
+            if (MarvelReturnedEntries[imgClicked.dataset.title].description != null) {
+                html += "<p>" + MarvelReturnedEntries[imgClicked.dataset.title].description + "</p>";
+            }
             else html += "No Description Available";
             break;
         default:
