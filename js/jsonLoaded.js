@@ -5,20 +5,18 @@ function jsonLoaded(obj){
     // if there's an error, print a message and return
     if (obj.code != 200){
         var status = obj.status;
-        document.querySelector("#content").innerHTML = "<h3><b>Error!</b></h3>" + "<p><i>" + status + "</i><p>";
-        //$("#content").fadeIn(500);
+        document.querySelector("section").innerHTML = "<h3><b>Error!</b></h3>" + "<p><i>" + status + "</i><p>";
         return; // Bail out
     }
     // if there are no results, print a message and return
     if(obj.data.count == 0){
         var status = "No results found";
-        document.querySelector("#content").innerHTML = "<p><i>" + status + "</i></p>";
-        //$("#content").fadeIn(500);
+        document.querySelector("section").innerHTML = "<p><i>" + status + "</i></p>";
         return; // Bail out
     }
     
     //if there are results, put them on the screen
-    var content = document.querySelector("#content");
+    var content = document.querySelector("section");
     content.innerHTML = "";
 
     var searchType = document.querySelector("#searchType").value;
@@ -131,6 +129,5 @@ function jsonError(jqXHR, textStatus, errorThrown) {
     console.log(textStatus);
     console.log(errorThrown);
     
-    document.querySelector("#content").innerHTML = " ";
-    document.querySelector("#statusText").innerHTML = "<p><i>Error</i>: " + errorThrown + ": "+ JSON.parse(jqXHR.responseText).status + "</p>";
+    document.querySelector("section").innerHTML = "<p><i>Error</i>: " + errorThrown + ": "+ JSON.parse(jqXHR.responseText).status + "</p>";
 }

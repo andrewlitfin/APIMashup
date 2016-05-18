@@ -1,13 +1,8 @@
 function buildUI(){
     //identify the div to append content to
-    var contentDiv = document.querySelector("#jsContent");
-    var resultsDiv = document.querySelector("#content");
-    var expandedResultsDiv = document.querySelector("#expanded");
-
-    //Header
-    var mainHeader = document.createElement('h1');
-    mainHeader.innerHTML = "Search the Marvel Comics Database!";
-    contentDiv.appendChild(mainHeader);
+    var contentDiv = document.querySelector("nav");
+    var resultsDiv = document.querySelector("section");
+    var expandedResultsDiv = document.querySelector("article");
 
     //Selector for search type
     var searchTypeSelector = document.createElement('select');

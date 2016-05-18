@@ -89,7 +89,7 @@ function expandResult(e){
             break;
     }
 
-    var expanded = document.querySelector("#expanded");
+    var expanded = document.querySelector("article");
     expanded.style.visibility = "visible";
     expanded.innerHTML = html;
 };
