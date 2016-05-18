@@ -105,7 +105,7 @@ function buildUI(){
                 firstNameFieldTitle.appendChild(firstNameField);
                 
                 var lastNameFieldTitle = document.createElement('p');
-                lastNameFieldTitle.innerHTML = "Creator First Name: ";
+                lastNameFieldTitle.innerHTML = "Creator Last Name: ";
                 searchOptionsDiv.appendChild(lastNameFieldTitle);
                 
                 var lastNameField = document.createElement('input');
