@@ -124,5 +124,5 @@ function jsonError(jqXHR, textStatus, errorThrown) {
     console.log(errorThrown);
     
     document.querySelector("#content").innerHTML = " ";
-    document.querySelector("#statusText").innerHTML = "<p><i>Error</i>: " + errorThrown + "</p>";
+    document.querySelector("#statusText").innerHTML = "<p><i>Error</i>: " + errorThrown + ": "+ JSON.parse(jqXHR.responseText).status + "</p>";
 }
