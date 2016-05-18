@@ -51,6 +51,7 @@ function buildUI(){
         searchOptionsDiv.innerHTML = "";
         resultsDiv.innerHTML = "";
         expandedResultsDiv.innerHTML = "";
+        expandedResultsDiv.style.visibility = "hidden";
         
         //repopulate the search options based on the value of the search option selector
         switch(e.target.value){
@@ -127,7 +128,7 @@ function buildUI(){
                 
                 var nameField = document.createElement('input');
                 nameField.type = 'text';
-                nameField.id = 'eventName'
+                nameField.id = 'eventName';
                 nameFieldTitle.appendChild(nameField);
                 
                 break;
