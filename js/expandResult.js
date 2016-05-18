@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 function expandResult(e){
     console.log("Expand");
     console.log(e);

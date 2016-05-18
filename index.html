@@ -67,7 +67,6 @@
             text-align: center;
         }
         section {
-            visibility: hidden;
             float: left;
             width: 46%;
             margin-bottom: 8px;
@@ -173,6 +172,15 @@
                 // call the web service, and download the file
                 console.log(marvelUrl);
                 //$("#content").fadeOut(250);
+                document.querySelector("section").innerHTML = "";
+                var spinner = document.createElement("img");
+                spinner.src = "assets/loading.gif";
+                spinner.style.width = "32px";
+                spinner.style.height = "32px";
+                spinner.style.display = "block";
+                spinner.style.margin = "0 auto";
+                document.querySelector("section").appendChild(spinner);
+                
                 $.ajax({
                     dataType: "json",
                     url: marvelUrl,

@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 function buildUI(){
     //identify the div to append content to
     var contentDiv = document.querySelector("nav");
@@ -46,7 +46,6 @@ function buildUI(){
         //clear the search options and the results
         searchOptionsDiv.innerHTML = "";
         resultsDiv.innerHTML = "";
-        resultsDiv.style.visibility = "hidden";
         expandedResultsDiv.innerHTML = "";
         expandedResultsDiv.style.visibility = "hidden";
         
