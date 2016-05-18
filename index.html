@@ -113,18 +113,21 @@
             //Build the site's UI programatically
             buildUI();
             
+            //When the enter key is pressed, if you are on the current window, click the search button
             $("#holder").keyup(function(event){
-                if(event.keyCode == 13){
+                if(event.keyCode == 13){ //keycode 13 is the enter key
                     $("#searchButton").trigger('click');
                 }
             });
             
+            //When the search button is clicked, build up the url based on the search type and search parameters
             $("#searchButton").click(function(){
                 var searchType = document.querySelector("#searchType").value;
                 
                 // build up our Marvel URL string
                 var marvelUrl = MARVEL_URL;
                 
+                //construct the url differently based on the search type
                 switch(searchType){
                     case "character":
                         marvelUrl += "characters?";
@@ -177,8 +180,8 @@
                     dataType: "json",
                     url: marvelUrl,
                     data: null,
-                    success: jsonLoaded,
-                    error: jsonError
+                    success: jsonLoaded, //callback for success
+                    error: jsonError, //callback for errors
                 });
             });
         }

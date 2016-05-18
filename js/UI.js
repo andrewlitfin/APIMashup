@@ -1,5 +1,6 @@
-"use strict"
-function buildUI(){
+function buildUI() {
+    "use strict";
+    
     //identify the div to append content to
     var contentDiv = document.querySelector("nav");
     var resultsDiv = document.querySelector("section");
@@ -13,19 +14,24 @@ function buildUI(){
     //Options for search type selector
     var characterOption = document.createElement('option');
     characterOption.value = 'character';
-    characterOption.innerHTML = 'Character'; searchTypeSelector.appendChild(characterOption);
+    characterOption.innerHTML = 'Character';
+    searchTypeSelector.appendChild(characterOption);
     var comicOption = document.createElement('option');
     comicOption.value = 'comic';
-    comicOption.innerHTML = 'Comic'; searchTypeSelector.appendChild(comicOption);
+    comicOption.innerHTML = 'Comic';
+    searchTypeSelector.appendChild(comicOption);
     var creatorsOption = document.createElement('option');
     creatorsOption.value = 'creators';
-    creatorsOption.innerHTML = 'Creators'; searchTypeSelector.appendChild(creatorsOption);
+    creatorsOption.innerHTML = 'Creators';
+    searchTypeSelector.appendChild(creatorsOption);
     var eventsOption = document.createElement('option');
     eventsOption.value = 'events';
-    eventsOption.innerHTML = 'Events'; searchTypeSelector.appendChild(eventsOption);
+    eventsOption.innerHTML = 'Events';
+    searchTypeSelector.appendChild(eventsOption);
     var seriesOption = document.createElement('option');
     seriesOption.value = 'series';
-    seriesOption.innerHTML = 'Series'; searchTypeSelector.appendChild(seriesOption);
+    seriesOption.innerHTML = 'Series';
+    searchTypeSelector.appendChild(seriesOption);
     
     //Create an area for the search options, and set a default state
     var searchOptionsDiv = document.createElement('div');
@@ -42,7 +48,7 @@ function buildUI(){
     nameFieldTitle.appendChild(nameField);
    
     //change the search options based on the search option selector 
-    document.querySelector("#searchType").onchange = function (e){
+    document.querySelector("#searchType").onchange = function (e) {
         //clear the search options and the results
         searchOptionsDiv.innerHTML = "";
         resultsDiv.innerHTML = "";
@@ -51,10 +57,8 @@ function buildUI(){
         expandedResultsDiv.style.visibility = "hidden";
         
         //repopulate the search options based on the value of the search option selector
-        switch(e.target.value){
+        switch (e.target.value) {
             case "character":
-                console.log("Character");
-                
                 var nameFieldTitle = document.createElement('h2');
                 nameFieldTitle.innerHTML = "Character Name: ";
                 searchOptionsDiv.appendChild(nameFieldTitle);
@@ -66,8 +70,6 @@ function buildUI(){
                 
                 break;
             case "comic":
-                console.log("Comic");
-                
                 //Title
                 var dateRangeTitle = document.createElement('h2');
                 dateRangeTitle.innerHTML = "Search All Comics From:";
@@ -96,8 +98,6 @@ function buildUI(){
                             
                 break;
             case "creators":
-                console.log("Creators");
-                
                 var firstNameFieldTitle = document.createElement('h2');
                 firstNameFieldTitle.innerHTML = "Creator First Name: ";
                 searchOptionsDiv.appendChild(firstNameFieldTitle);
@@ -118,8 +118,6 @@ function buildUI(){
                 
                 break;
             case "events":
-                console.log("Events");
-                
                 var nameFieldTitle = document.createElement('h2');
                 nameFieldTitle.innerHTML = "Event Name: ";
                 searchOptionsDiv.appendChild(nameFieldTitle);
@@ -131,8 +129,6 @@ function buildUI(){
                 
                 break;
             case "series":
-                console.log("Series");
-                
                 var nameFieldTitle = document.createElement('h2');
                 nameFieldTitle.innerHTML = "Series Name: ";
                 searchOptionsDiv.appendChild(nameFieldTitle);
@@ -144,7 +140,6 @@ function buildUI(){
                 
                 break;
             default:
-                console.log("Default");
                 break;
         }
     };
