@@ -1,3 +1,4 @@
+"use strict"
 function buildUI(){
     //identify the div to append content to
     var contentDiv = document.querySelector("nav");

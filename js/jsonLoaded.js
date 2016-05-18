@@ -1,3 +1,4 @@
+"use strict"
 function jsonLoaded(obj){
 //    console.log("obj = " +obj);
 //    console.log("obj stringified = " + JSON.stringify(obj));            
